@@ -1,9 +1,3 @@
---TODO(theHamsta): remove once stabilized!
-if not pcall(require,"vim.treesitter.query") then
-  error("nvim-treesitter requires a more recent Neovim nightly version!")
-end
-
-local install = require'nvim-treesitter.install'
 local utils = require'nvim-treesitter.utils'
 local ts_utils = require'nvim-treesitter.ts_utils'
 local info = require'nvim-treesitter.info'
@@ -17,7 +11,6 @@ require"nvim-treesitter.query_predicates"
 local M = {}
 
 function M.setup()
-  utils.setup_commands('install', install.commands)
   utils.setup_commands('info', info.commands)
   utils.setup_commands('configs', configs.commands)
   configs.init()

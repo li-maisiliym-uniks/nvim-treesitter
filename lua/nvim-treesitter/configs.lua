@@ -9,7 +9,6 @@ local M = {}
 
 local config = {
   modules = {},
-  ensure_installed = {},
   update_strategy = 'lockfile',
 }
 -- List of modules that need to be setup on initialization.
@@ -228,13 +227,6 @@ end
 -- @param user_data module overrides
 function M.setup(user_data)
   config.modules = vim.tbl_deep_extend('force', config.modules, user_data)
-
-  local ensure_installed = user_data.ensure_installed or {}
-  if #ensure_installed > 0 then
-    require'nvim-treesitter.install'.ensure_installed(ensure_installed)
-  end
-
-  config.modules.ensure_installed = nil
 
   recurse_modules(function(_, _, new_path)
     local data = utils.get_at_path(config.modules, new_path)
