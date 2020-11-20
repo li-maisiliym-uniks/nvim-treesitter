@@ -176,7 +176,7 @@ function M.iter_group_results(bufnr, query_group, root)
   local query = M.get_query(lang, query_group)
   if not query then return function() end end
 
-  local parser = parsers.get_parser(bufnr, lang)
+  local parser = vim.treesitter.get_parser(bufnr, lang)
   if not parser then return function() end end
 
   local root = root or parser:parse():root()

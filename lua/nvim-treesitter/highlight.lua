@@ -78,7 +78,7 @@ hlmap["tag.delimiter"] = "TSTagDelimiter"
 hlmap["none"] = "TSNone"
 
 function M.attach(bufnr, lang)
-  local parser = parsers.get_parser(bufnr, lang)
+  local parser = vim.treesitter.get_parser(bufnr, lang)
   local config = configs.get_module('highlight')
 
   if config.use_languagetree then
